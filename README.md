@@ -5,6 +5,7 @@
 # 環境構築
 
 ## バックエンド
+セキュアな情報は***で示しており、開発メンバーからもらうこと。
 
 1. `rails-api`ディレクトリに移動する。
 
@@ -19,26 +20,31 @@ cd rails-api
 MYAPP_DATABASE_USERNAME=***
 MYAPP_DATABASE_PASSWORD=***
 ```
+3. masterkeyを設定する。
+以下のような`master.key`ファイルを作成し、`/rails-api/config`ディレクトリに配置する。
+```
+******
+```
 
-3. Docker を構築する。
+4. Docker を構築する。
 
 ```
 docker compose build
 ```
 
-4. データベースを作成する。
+5. データベースを作成する。
 
 ```
 docker-compose run web rails db:create
 ```
 
-5. Docker を立ち上げる
+6. Docker を立ち上げる
 
 ```
 docker compose up
 ```
 
-6. 動作確認
+7. 動作確認
    以下のようにテスト用の API にアクセスする。
 
 ```
