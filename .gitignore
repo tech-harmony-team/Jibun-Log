@@ -3,3 +3,4 @@
 rails-api/tmp
 
 rails-api/config/master.key
+rails-api/log/development.log
