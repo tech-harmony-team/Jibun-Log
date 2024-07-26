@@ -1,3 +1,5 @@
 .DS_Store
 .env
 rails-api/tmp
+
+rails-api/config/master.key
