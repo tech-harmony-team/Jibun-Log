@@ -57,7 +57,7 @@ export default function DiaryPage() {
     },
     {
       id: 4,
-      actionName: "夕方の散歩",
+      actionName: "夕方の散歩夕方の散歩夕方の散歩",
       actionDetail: "近所を30分散歩しました。",
       originality: "新しいルートを歩いてみました。",
       getSomething: "リフレッシュした気分",

@@ -13,7 +13,7 @@ export default function DiaryCard(props: Props) {
   const { edit, diaryData } = props;
   return (
     <div className="w-80 h-auto p-2 bg-white drop-shadow-md rounded-md flex flex-col">
-      <div className="h-10 flex flex-row">
+      <div className="min-h-10 flex flex-row">
         <div className="w-2/3 flex items-center">
           <h1 className="text-2xl font-bold">{diaryData.actionName}</h1>
         </div>
