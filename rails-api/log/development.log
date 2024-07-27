@@ -274,3 +274,12 @@ Processing by ApplicationController#health_check as HTML
 Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 198)
 
 
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE `jibun_log_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE DATABASE `jibun_log_test` DEFAULT CHARACTER SET `utf8`[0m
+Started GET "/" for 172.26.0.1 at 2024-07-27 01:34:41 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.5ms | Allocations: 616)
+Completed 200 OK in 34ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 6946)
+
+
