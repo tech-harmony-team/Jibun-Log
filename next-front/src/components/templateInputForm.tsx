@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TextInput } from "./textInput";
+import { TextInput } from "./textInput/textInput";
 import { useCallback } from "react";
 
 const schema = z.object({

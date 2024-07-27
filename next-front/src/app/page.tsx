@@ -1,6 +1,6 @@
 "use client";
 
-import { InputForm } from "../components/inputForm";
+import { InputForm } from "../components/templateInputForm";
 
 export default function Home() {
   return (
