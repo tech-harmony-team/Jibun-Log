@@ -25,7 +25,7 @@ export const useUserDatas = () => {
   };
 
   //ユーザーデータをCookieから削除
-  const removeUserName = () => {
+  const removeUserData = () => {
     setCookie("id", "", { path: "/", maxAge: 0 });
     setCookie("email", "", { path: "/", maxAge: 0 });
     setCookie("response", "", { path: "/", maxAge: 0 });
@@ -46,5 +46,5 @@ export const useUserDatas = () => {
     };
   };
 
-  return { setUserData, removeUserName, getUserData };
+  return { setUserData, removeUserData, getUserData };
 };
