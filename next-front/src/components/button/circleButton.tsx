@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../types/buttonType'; 
+import { ButtonProps } from '../../types/buttonType';
 
 export const CircleButton: React.FC<ButtonProps> = ({
 	label,
