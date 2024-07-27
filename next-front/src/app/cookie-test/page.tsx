@@ -29,7 +29,7 @@ export default function CookieTestPage() {
       setSavedData(null);
       return;
     }
-    console.log("結果" + userData);
+    console.log("結果" + JSON.stringify(userData));
     setSavedData(userData);
   };
 
