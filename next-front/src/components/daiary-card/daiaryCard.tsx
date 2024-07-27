@@ -15,15 +15,15 @@ export default function DiaryCard(props: Props) {
     <div className="w-80 h-auto p-2 bg-white drop-shadow-md rounded-md flex flex-col">
       <div className="min-h-10 flex flex-row">
         <div className="w-2/3 flex items-center">
-          <h1 className="text-2xl font-bold">{diaryData.actionName}</h1>
+          <h1 className="text-2xl font-bold p-2">{diaryData.actionName}</h1>
         </div>
         <div className="w-1/3 flex justify-end items-center">
-          <p className="text-sm">
-            {diaryData.startTime}〜{diaryData.endTime}
+          <p className="text-md">
+            {diaryData.startTime}~{diaryData.endTime}
           </p>
         </div>
       </div>
-      <div className="h-auto">
+      <div className="h-auto p-2">
         <p className="text-xl">{diaryData.actionDetail}</p>
       </div>
       {edit && (
