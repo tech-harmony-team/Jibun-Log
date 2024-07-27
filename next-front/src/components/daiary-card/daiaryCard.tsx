@@ -1,26 +1,28 @@
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { DiaryData } from "@/types/daiaryData";
 
 type Props = {
   edit: boolean;
+  diaryData: DiaryData;
 };
 
 export default function DiaryCard(props: Props) {
-  const { edit } = props;
+  const { edit, diaryData } = props;
   return (
-    <div className="w-80 h-80 p-2 bg-white drop-shadow-md rounded-md flex flex-col">
+    <div className="w-80 h-72 p-2 bg-white drop-shadow-md rounded-md flex flex-col">
       <div className="h-1/5 flex flex-row">
         <div className="w-2/3 flex items-center">
-          <h1 className="text-2xl font-bold">タイトルが長い時はどうなるか？</h1>
+          <h1 className="text-2xl font-bold">{diaryData.actionName}</h1>
         </div>
         <div className="w-1/3 flex justify-end items-center">
-          <p className="text-sm">10:00~12:00</p>
+          <p className="text-sm">
+            {diaryData.startTime}〜{diaryData.endTime}
+          </p>
         </div>
       </div>
       <div className="h-3/5">
-        <p className="text-xl">
-          日記の内容が入ります。日記の内容が入ります。日記の内容が入ります。日記の内容が入ります。日記の内容が入ります。日記の内容が入ります。
-        </p>
+        <p className="text-xl">{diaryData.actionDetail}</p>
       </div>
       {edit && (
         <div className="h-1/5 flex flex-row">
