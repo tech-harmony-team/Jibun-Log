@@ -5,7 +5,8 @@
 # 環境構築
 
 ## バックエンド
-セキュアな情報は***で示しており、開発メンバーからもらうこと。
+
+セキュアな情報は\*\*\*で示しており、開発メンバーからもらうこと。
 
 1. `rails-api`ディレクトリに移動する。
 
@@ -20,8 +21,10 @@ cd rails-api
 MYAPP_DATABASE_USERNAME=***
 MYAPP_DATABASE_PASSWORD=***
 ```
-3. masterkeyを設定する。
-以下のような`master.key`ファイルを作成し、`/rails-api/config`ディレクトリに配置する。
+
+3. masterkey を設定する。
+   以下のような`master.key`ファイルを作成し、`/rails-api/config`ディレクトリに配置する。
+
 ```
 ******
 ```
@@ -55,10 +58,10 @@ curl http://localhost:3000/health_check
 
 node が PC にインストールされている必要があります。
 
-1. `frontend`ディレクトリに移動する。
+1. `next-front`ディレクトリに移動する。
 
 ```
-cd frontend
+cd next-front
 ```
 
 2. ライブラリ等をインストールする。
@@ -70,8 +73,8 @@ npm i
 3. 開発サーバを立ち上げる
 
 ```
-npm run dev
+make dev
 ```
 
 4. 動作確認
-   `localhost:5173`にアクセスする。
+   `localhost:3001`にアクセスする。
