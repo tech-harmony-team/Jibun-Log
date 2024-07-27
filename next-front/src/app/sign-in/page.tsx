@@ -7,9 +7,21 @@ import { useState } from "react";
 import { CheckRounded } from "@mui/icons-material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
+import { useRouter } from "next/navigation";
+
 export default function SignInPage() {
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const handleSignIn = async () => {
+    //TODO: ログイン処理を書く
+    location.href = "/home";
+  };
+
+  const handleBack = () => {
+    router.push("/");
+  };
 
   return (
     <div className="w-4/5 max-w-600 h-full mx-auto pt-14 bg-stone-50">
@@ -39,6 +51,7 @@ export default function SignInPage() {
           color="#fff"
           backgroundColor="#999999"
           Icon={ArrowBackIosNewIcon}
+          onClick={handleBack}
         />
         <CircleButton
           label="ログイン"
@@ -46,6 +59,7 @@ export default function SignInPage() {
           color="#fff"
           backgroundColor="#1A85D1"
           Icon={CheckRounded}
+          onClick={handleSignIn}
         />
       </div>
     </div>

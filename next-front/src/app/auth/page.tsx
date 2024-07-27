@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { CircleButton } from "@/components/button/circleButton";
 import PageHeader from "@/components/typography/pageHeader";
 import { CheckRounded } from "@mui/icons-material";
@@ -7,8 +9,18 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useState } from "react";
 
 export default function AuthPage() {
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const handleAuth = async () => {
+    //TODO: 新規登録処理を書く
+    location.href = "/home";
+  };
+
+  const handleBack = () => {
+    router.push("/");
+  };
 
   return (
     <div className="w-4/5 max-w-600 h-full mx-auto pt-14 bg-stone-50">
@@ -38,6 +50,7 @@ export default function AuthPage() {
           color="#fff"
           backgroundColor="#999999"
           Icon={ArrowBackIosNewIcon}
+          onClick={handleBack}
         />
         <CircleButton
           label="登録"
@@ -45,6 +58,7 @@ export default function AuthPage() {
           color="#fff"
           backgroundColor="#1A85D1"
           Icon={CheckRounded}
+          onClick={handleAuth}
         />
       </div>
     </div>
