@@ -1,6 +1,6 @@
 "use client";
 
-import DiaryCard from "@/components/daiary-card/daiaryCard";
+import DiaryCard from "@/components/daiary-card/diaryCard";
 import PageHeader from "@/components/typography/pageHeader";
 import { DiaryData } from "@/types/daiaryData";
 
