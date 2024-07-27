@@ -40,7 +40,7 @@ export default function AuthPage() {
           Icon={ArrowBackIosNewIcon}
         />
         <CircleButton
-          label="戻る"
+          label="登録"
           fontsize="60px"
           color="#fff"
           backgroundColor="#1A85D1"
