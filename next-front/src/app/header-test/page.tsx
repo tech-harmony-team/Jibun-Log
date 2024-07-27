@@ -9,6 +9,9 @@ export default function Page() {
       <PageHeader type="h2" textAlignment="center">
         一番印象に残った日記 を選択
       </PageHeader>
+      <PageHeader type="h2" textAlignment="left">
+        一番印象に残った日記 を選択
+      </PageHeader>
     </>
   );
 }
