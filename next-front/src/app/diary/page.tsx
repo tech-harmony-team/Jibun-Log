@@ -1,3 +1,5 @@
+"use client";
+
 import DiaryCard from "@/components/daiary-card/daiaryCard";
 import PageHeader from "@/components/typography/pageHeader";
 import { DiaryData } from "@/types/daiaryData";
@@ -23,7 +25,8 @@ export default function DiaryPage() {
     {
       id: 2,
       actionName: "昼食作り",
-      actionDetail: "パスタを作りました。",
+      actionDetail:
+        "パスタを作りました。パスタを作りました。パスタを作りました。パスタを作りました。パスタを作りました。パスタを作りました。パスタを作りました。パスタを作りました。",
       originality: "新しいレシピを試しました。",
       getSomething: "美味しいパスタと料理の自信",
       questionOne: "今日の料理の目標は？",
