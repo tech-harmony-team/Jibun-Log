@@ -4,18 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TextInput } from "./textInput";
 
 const schema = z.object({
-	textInput: z.string().min(1, { message: "This field is required" }),
+	id: z.number().nullable(),
+	title: z.record(z.string()),
 });
 
 type Schema = z.infer<typeof schema>;
 
 export const InputForm = () => {
-	const { control, handleSubmit, reset, formState: {errors} } = useForm<Schema>({
-		defaultValues: {
-			textInput: "",
-		},
-		resolver: zodResolver(schema),
-	});
+	const { control, handleSubmit, reset, formState: {errors} } = useForm<Schema>({});
 
 	const onSubmit: SubmitHandler<Schema> = (data) => {
 		console.log(data);
@@ -23,7 +19,7 @@ export const InputForm = () => {
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<TextInput control={control} name="textInput" label="タイトル"  />
+			<TextInput control={control} name="title" label="タイトル"  />
 			<button type="submit">Submit</button>
 		</form>
 	);
