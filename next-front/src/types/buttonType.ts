@@ -4,5 +4,5 @@ export type ButtonProps = {
 	color: string;
 	backgroundColor?: string;
 	Icon: React.ElementType;
-  // onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
 };
