@@ -13,7 +13,14 @@ export default function AuthPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const [blankError, setBlankError] = useState<boolean>(false);
+
   const handleAuth = async () => {
+    if (email === "" || password === "") {
+      setBlankError(true);
+      return;
+    }
+    setBlankError(false);
     //TODO: 新規登録処理を書く
     location.href = "/home";
   };
@@ -42,6 +49,11 @@ export default function AuthPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {blankError && (
+          <div className="w-full h-12 bg-red-600 text-white text-center rounded-md">
+            メールアドレスとパスワード両方を入力してください
+          </div>
+        )}
       </div>
       <div className="w-4/5 max-w-600 h-1/5 mx-auto flex flex-row gap-x-10 justify-center items-center">
         <CircleButton
