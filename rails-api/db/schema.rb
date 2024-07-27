@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
   end
 
   create_table "diaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id", null: false
     t.string "action_name", null: false
     t.text "action_detail", null: false
     t.text "question_one"
@@ -28,14 +28,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
     t.text "question_two"
     t.text "answer_two"
     t.string "img_url"
-    t.boolean "originally", default: false, null: false
-    t.boolean "get_something", default: false, null: false
+    t.text "originally"
+    t.text "get_something"
     t.boolean "is_best_diary", default: false, null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -52,4 +53,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
   end
 
   add_foreign_key "analytics", "users"
+  add_foreign_key "diaries", "users"
 end
