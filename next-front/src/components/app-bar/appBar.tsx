@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function AppBar() {
   const router = useRouter();
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const jumpToPage = (page: string) => {
     router.push(page);

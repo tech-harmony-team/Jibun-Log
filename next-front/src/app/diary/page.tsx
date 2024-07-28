@@ -1,5 +1,6 @@
 "use client";
 
+import AppBar from "@/components/app-bar/appBar";
 import DiaryCard from "@/components/daiary-card/diaryCard";
 import PageHeader from "@/components/typography/pageHeader";
 import { DiaryData } from "@/types/daiaryData";
@@ -74,16 +75,19 @@ export default function DiaryPage() {
   ];
 
   return (
-    <div className="w-4/5 max-w-600 h-full mx-auto pt-14 bg-stone-50">
-      <PageHeader type="h1" textAlignment="left">
-        日記
-      </PageHeader>
-      <h2 className="text-4xl text-center">7/25 (木)</h2>
-      <div className="h-4/5 py-5 flex flex-col items-center gap-y-3 overflow-y-scroll">
-        {testData.map((diaryData) => (
-          <DiaryCard key={diaryData.id} edit={true} diaryData={diaryData} />
-        ))}
+    <>
+      <AppBar />
+      <div className="w-4/5 max-w-600 h-full mx-auto pt-14 bg-stone-50">
+        <PageHeader type="h1" textAlignment="left">
+          日記
+        </PageHeader>
+        <h2 className="text-4xl text-center">7/25 (木)</h2>
+        <div className="h-4/5 py-5 flex flex-col items-center gap-y-3 overflow-y-scroll">
+          {testData.map((diaryData) => (
+            <DiaryCard key={diaryData.id} edit={true} diaryData={diaryData} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
