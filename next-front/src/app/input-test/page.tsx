@@ -7,13 +7,13 @@ import { TextInput } from "@/components/textInput/textInput";
 import { useCallback } from "react";
 import PageHeader from "@/components/typography/pageHeader";
 import { CircleButton } from "@/components/button/circleButton";
-import { ChevronRightRounded } from "@mui/icons-material";
+import { ChevronRightRounded, ArrowBackIosNew } from "@mui/icons-material";
 
 const schema = z.object({
-	title: z.string().min(1),
-	diary: z.string().min(1),
-	effort: z.string(),
-	gain: z.string(),
+	title: z.string().min(1, "タイトルを入力してください"),
+	diary: z.string().min(1, "本文を入力してください"),
+	effort: z.string().min(1, "工夫を入力してください"),
+	gain: z.string().min(1, "得たことを入力してください"),
 });
 
 export type Schema = z.infer<typeof schema>;
@@ -29,10 +29,14 @@ export default function InputPage() {
 		},
 	});
 
-	const onSubmit: SubmitHandler<Schema> = (data) => {
+	const handleBack = () => {
+		window.location.href = '/home';
+	}
+
+	const onSubmit: SubmitHandler<Schema> = useCallback((data) => {
 		console.log(data);
 		window.location.href = '/input-test-2';
-	};
+		}, []);
 
 	const handleReset = useCallback(() => {
 		reset();
@@ -53,7 +57,16 @@ export default function InputPage() {
 				<TextInput control={control} id="outlined-required" name="effort" label="工夫" fullWidth multiline rows={5} margin="normal"/>
 				<TextInput control={control} id="outlined-required" name="gain" label="得たこと" fullWidth multiline rows={5} margin="normal"/>
 				<div className="flex flex-row justify-end space-x-4">
-					<button type="button" onClick={handleReset}>Reset</button>
+					{/* フォームのリセット用ボタン */}
+					{/* <button type="button" onClick={handleReset}>Reset</button> */}
+					<CircleButton
+						label="戻る"
+						fontsize="50px"
+						color="#fff"
+						backgroundColor="#999999"
+						Icon={ArrowBackIosNew}
+						onClick={handleBack}
+        	/>
 					<CircleButton
 						label="次へ"
 						fontsize="50px"
