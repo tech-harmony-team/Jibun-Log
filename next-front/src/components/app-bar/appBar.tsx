@@ -17,7 +17,10 @@ export default function AppBar() {
   return (
     <div>
       <div className="w-full h-12 py-2 px-5 flex flex-row justify-center items-center bg-white drop-shadow-md z-40 fixed">
-        <div className="w-3/4 h-full flex items-center">
+        <div
+          className="w-3/4 h-full flex items-center cursor-pointer"
+          onClick={() => jumpToPage("/home")}
+        >
           <h1 className="text-3xl font-bold">自分.log</h1>
         </div>
         <div
@@ -39,7 +42,10 @@ export default function AppBar() {
             </div>
           </div>
           <div className="w-3/4 h-full flex flex-col gap-5 mx-auto my-10">
-            <h1 className="text-blue-500 mb-5 text-center text-4xl font-bold">
+            <h1
+              className="text-blue-500 mb-5 text-center text-4xl font-bold cursor-pointer"
+              onClick={() => jumpToPage("/home")}
+            >
               自分.Log
             </h1>
             <div
