@@ -40,6 +40,6 @@ class Api::V1::Current::DiariesController < ApplicationController
   end
 
   def diary_params
-      params.require(:diary).permit(:action_name, :action_detail, :originality, :get_something, :img_url, :start_time, :end_time, :date, :question_one, :question_two,answer_one,answer_two)
+      params.require(:diary).permit(:action_name, :action_detail, :originality, :get_something, :img_url, :start_time, :end_time, :date, :question_one, :question_two,:answer_one,:answer_two, :is_best_diary)
   end
 end
