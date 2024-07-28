@@ -4,8 +4,15 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 export default function AppBar() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(true);
+
+  const jumpToPage = (page: string) => {
+    router.push(page);
+  };
 
   return (
     <div>
@@ -35,16 +42,28 @@ export default function AppBar() {
             <h1 className="text-blue-500 mb-5 text-center text-4xl font-bold">
               自分.Log
             </h1>
-            <div className="w-full h-10 flex justify-center items-center cursor-pointer">
+            <div
+              className="w-full h-10 flex justify-center items-center cursor-pointer"
+              onClick={() => jumpToPage("/home")}
+            >
               <h2 className="text-2xl">ホーム</h2>
             </div>
-            <div className="w-full h-10 flex justify-center items-center cursor-pointer">
+            <div
+              className="w-full h-10 flex justify-center items-center cursor-pointer"
+              onClick={() => jumpToPage("/diary")}
+            >
               <h2 className="text-2xl">日記</h2>
             </div>
-            <div className="w-full h-10 flex justify-center items-center cursor-pointer">
+            <div
+              className="w-full h-10 flex justify-center items-center cursor-pointer"
+              onClick={() => jumpToPage("/analyze")}
+            >
               <h2 className="text-2xl">分析</h2>
             </div>
-            <div className="w-full h-10 flex justify-center items-center cursor-pointer">
+            <div
+              className="w-full h-10 flex justify-center items-center cursor-pointer"
+              onClick={() => jumpToPage("/setting")}
+            >
               <h2 className="text-2xl">設定</h2>
             </div>
           </div>
