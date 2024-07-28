@@ -39,7 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
     t.datetime "updated_at", null: false
   end
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_121807) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
