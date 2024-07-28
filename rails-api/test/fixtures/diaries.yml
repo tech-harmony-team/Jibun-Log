@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  action_name: MyString
+  action_detail: MyText
+  originally: MyText
+  get_something: MyText
+  question_one: MyText
+  answer_one: MyText
+  question_two: MyText
+  answer_two: MyText
+  img_url: MyString
+  is_best_diary: false
+  start_time: 2024-07-27 21:19:10
+  end_time: 2024-07-27 21:19:10
+  date: 2024-07-27
+
+two:
+  user_id: 1
+  action_name: MyString
+  action_detail: MyText
+  originally: MyText
+  get_something: MyText
+  question_one: MyText
+  answer_one: MyText
+  question_two: MyText
+  answer_two: MyText
+  img_url: MyString
+  is_best_diary: false
+  start_time: 2024-07-27 21:19:10
+  end_time: 2024-07-27 21:19:10
+  date: 2024-07-27
