@@ -8,8 +8,13 @@ import { CheckRounded } from "@mui/icons-material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 import { useRouter } from "next/navigation";
+import { UserData } from "@/types/userData";
+
+import { useUserDatas } from "@/hooks/useUserDatas";
 
 export default function SignInPage() {
+  const { setUserData } = useUserDatas();
+
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -23,7 +28,67 @@ export default function SignInPage() {
     }
     setBlankError(false);
     //TODO: ログイン処理を書く
-    location.href = "/home";
+    const url = "http://localhost:3000/api/v1/auth/sign_in";
+    const obj = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      }).then(async (res) => {
+        const contentType = res.headers.get("content-type");
+        if (!res.ok) {
+          const statusCode = res.status;
+          if (!contentType || !contentType.includes("application/json")) {
+            throw new Error("Oops, we haven't got JSON!");
+          }
+          switch (statusCode) {
+            case 401:
+              alert("ログインに失敗しました。もう一度お試しください。");
+              break;
+            case 422:
+              alert("ログインに失敗しました。もう一度お試しください。");
+              break;
+            default:
+              throw new Error("Oops, we haven't got JSON!");
+          }
+        }
+        //header内の情報を取得
+        const accessToken = res.headers.get("access-token");
+        const client = res.headers.get("client");
+        const uid = res.headers.get("uid");
+
+        //header内に情報がない場合はエラーを返す
+        if (!accessToken || !client || !uid) {
+          throw new Error("Oops, we haven't got Headers!");
+        }
+
+        const data = await res.json();
+
+        const userData = data.data;
+
+        const userObj: UserData = {
+          id: userData.id,
+          email: userData.email,
+          response: userData.response,
+          accessToken: accessToken,
+          client: client,
+          uid: uid,
+        };
+
+        setUserData(userObj);
+
+        location.href = "/home";
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleBack = () => {

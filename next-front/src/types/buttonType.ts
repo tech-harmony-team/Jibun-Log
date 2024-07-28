@@ -1,10 +1,10 @@
 export type ButtonProps = {
-	label: string;
+	label?: string;
 	fontsize: string;
 	color: string;
 	backgroundColor?: string;
 	Icon: React.ElementType;
-  onClick?: () => void;
+  onClick?: any;
 };
 
 // template

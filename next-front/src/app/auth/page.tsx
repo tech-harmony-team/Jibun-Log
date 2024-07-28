@@ -7,6 +7,7 @@ import PageHeader from "@/components/typography/pageHeader";
 import { CheckRounded } from "@mui/icons-material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useState } from "react";
+import { UserData } from "@/types/userData";
 
 export default function AuthPage() {
   const router = useRouter();
@@ -22,7 +23,60 @@ export default function AuthPage() {
     }
     setBlankError(false);
     //TODO: 新規登録処理を書く
-    location.href = "/home";
+
+    const url = "http://localhost:3000/api/v1/auth";
+    const obj = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      }).then(async (res) => {
+        const contentType = res.headers.get("content-type");
+        if (!res.ok) {
+          const statusCode = res.status;
+          if (!contentType || !contentType.includes("application/json")) {
+            throw new Error("Oops, we haven't got JSON!");
+          }
+          switch (statusCode) {
+            case 422:
+              alert("すでに登録されたユーザーです。");
+              break;
+            default:
+              throw new Error("Oops, we haven't got JSON!");
+          }
+        }
+
+        const data = await res.json();
+        const status = data.status;
+        if (status === "error") {
+          alert("何らかのエラーが発生しました");
+          return;
+        }
+
+        const userData = data.data;
+
+        const userObj: UserData = {
+          id: userData.id,
+          email: userData.email,
+          response: userData.response,
+          accessToken: "",
+          client: "",
+          uid: "",
+        };
+
+        console.log(userObj);
+        location.href = "/sign-in";
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleBack = () => {

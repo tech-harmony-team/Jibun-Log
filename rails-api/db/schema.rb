@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_050234) do
   create_table "analytics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "response"
@@ -29,8 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_133007) do
     t.text "question_two"
     t.text "answer_two"
     t.string "img_url"
-    t.boolean "originally", default: false, null: false
-    t.boolean "get_something", default: false, null: false
+    t.text "originality"
+    t.text "get_something"
     t.boolean "is_best_diary", default: false, null: false
     t.datetime "start_time"
     t.datetime "end_time"

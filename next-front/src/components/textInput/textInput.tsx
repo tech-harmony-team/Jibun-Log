@@ -7,10 +7,23 @@ import {
 } from "react-hook-form";
 
 export type TextInputProps<T extends FieldValues> = UseControllerProps<T> &
-  Pick<FieldWrapperProps, "label">;
+  Pick<FieldWrapperProps, "label"> & {
+    style?: React.CSSProperties;
+		id:string,
+    multiline?: boolean;
+    rows?: number;
+    fullWidth?: boolean;
+		margin?: string;
+  };
 
 export const TextInput = <T extends FieldValues>({
   label,
+	id,
+  style,
+  multiline,
+  rows,
+  fullWidth,
+	margin,
   ...props
 }: TextInputProps<T>): JSX.Element => {
   const {
@@ -20,7 +33,16 @@ export const TextInput = <T extends FieldValues>({
 
   return (
     <FieldWrapper label={label} errorMessage={error?.message}>
-      <TextField {...field} />
+      <TextField
+        {...field}
+				// idが機能していない
+				id={id}
+        style={style}
+        multiline={multiline}
+        rows={rows}
+        fullWidth={fullWidth}
+        margin={margin ? "none" : margin=="normal" ? "none" : "dense"}
+      />
     </FieldWrapper>
   );
 };
