@@ -10,7 +10,11 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useRouter } from "next/navigation";
 import { UserData } from "@/types/userData";
 
+import { useUserDatas } from "@/hooks/useUserDatas";
+
 export default function SignInPage() {
+  const { setUserData } = useUserDatas();
+
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -78,7 +82,8 @@ export default function SignInPage() {
           uid: uid,
         };
 
-        console.log(userObj);
+        setUserData(userObj);
+
         location.href = "/home";
       });
     } catch (error) {
