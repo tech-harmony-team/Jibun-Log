@@ -1,43 +1,32 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { TextInput } from "@/components/textInput/textInput";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import PageHeader from "@/components/typography/pageHeader";
 import { CircleButton } from "@/components/button/circleButton";
-import { CheckRounded } from "@mui/icons-material";
-
-const schema = z.object({
-	title: z.string().min(1),
-	diary: z.string().min(1),
-	effort: z.string(),
-});
-
-export type Schema = z.infer<typeof schema>;
+import { CheckRounded, ArrowBackIosNew } from "@mui/icons-material";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function InputPage2() {
-	const [date, setDate] = useState(0);
-	const [startTime, setStartTime] = useState(0);
-	const [endTime, setEndTime] = useState(0);
+	const [date, setDate] = useState<Date>();
+	const [startTime, setStartTime] = useState<Date>();
+	const [endTime, setEndTime] = useState<Date>();
 	const [allDay, setAllDay] = useState(false);
 
-	const stringToNumer = (str: string) => {
-		const _date = new Date(Date.parse(str));
-		return _date.getTime();
-	}
-
-	const numberToString = (num: number) => {
-		const _date = new Date(num);
-		return _date.toISOString().slice(0, 10);
-	}
+	const handleBack = () => {
+		window.location.href = '/input-test';
+	};
 
 	const onSubmit = () => {
 		console.log(date);
 		console.log(startTime);
 		console.log(endTime);
 		console.log(allDay? "終日": "終日ではない");
+		if (date && (allDay || (startTime && endTime))) {
+			window.location.href = '/input-test-3';
+		}
+		else
+			alert("日付、開始時間、終了時間は必須です");
 	};
 
   return (
@@ -52,33 +41,50 @@ export default function InputPage2() {
 			<div className="flex flex-col w-4/5 mx-auto space-y-4">
 				<div className="flex flex-row space-x-4">
 					<label>日付</label>
-					<input
-						type="date"
-						value={numberToString(date)}
-						onChange={(e) => setDate(stringToNumer(e.target.value))}
+					<DatePicker
+						selected={date}
+						onChange={(date) => setDate(date!)}
+						showDateSelect
+						dateFormat={"MM/dd"}
 					/>
 				</div>
 				<div className="flex flex-row space-x-4">
 					<label>開始時間</label>
-					<input
-						type="time"
-						value={numberToString(startTime)}
-						onChange={(e) => setStartTime(stringToNumer(e.target.value))}
+					<DatePicker
+						selected={startTime}
+						onChange={(date) => setStartTime(date!)}
+						showTimeSelect
+						showTimeSelectOnly
+						timeIntervals={15}
+						timeCaption="Time"
+						dateFormat="HH:mm"
 					/>
 				</div>
 				<div className="flex flex-row space-x-4">
 					<label>終了時間</label>
-					<input
-						type="time"
-						value={numberToString(endTime)}
-						onChange={(e) => setEndTime(stringToNumer(e.target.value))}
+					<DatePicker
+						selected={endTime}
+						onChange={(date) => setEndTime(date!)}
+						showTimeSelect
+						showTimeSelectOnly
+						timeIntervals={15}
+						timeCaption="Time"
+						dateFormat="HH:mm"
 					/>
 				</div>
 				<div className="flex flex-row space-x-4">
 					<label>終日に設定</label>
-					<input type="checkbox" checked={allDay} />
+					<input type="checkbox" checked={allDay} style={{ width: '20px', height: '20px' }} onChange={() => setAllDay(!allDay)} />
 				</div>
 				<div className="flex flex-row justify-end space-x-4">
+					<CircleButton
+						label="戻る"
+						fontsize="50px"
+						color="#fff"
+						backgroundColor="#999999"
+						Icon={ArrowBackIosNew}
+						onClick={handleBack}
+        	/>
 					<CircleButton
 						label="完了"
 						fontsize="50px"
