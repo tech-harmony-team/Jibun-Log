@@ -12,12 +12,8 @@ import { set } from "react-hook-form";
 
 
 export default function AnswerQuestion(
-	{ setCurrentPage, currentPage }: { setCurrentPage: (page: string) => void; currentPage: string }) {
-  const [title, setTitle] = useState<string>("");
-  const [diary, setDiary] = useState<string>("");
-  const [effort, setEffort] = useState<string>("");
-  const [gain, setGain] = useState<string>("");
-
+	{ setCurrentPage, currentPage, questions, answers, setAnswers }: 
+	{ setCurrentPage: (page: string) => void; currentPage: string; questions: string[]; answers: string[]; setAnswers: (answers: string[]) => void }) {
   const [error, setError] = useState<boolean>(false);
 
   const handleBack = () => {
@@ -25,11 +21,11 @@ export default function AnswerQuestion(
   };
 
   const handleSubmit = () => {
-    if (!title || !diary || !effort || !gain) {
+    if (answers.length !== questions.length) {
       setError(true);
-      return;
-    }
-    setError(false);
+			return;
+		}
+		setError(false);
     setCurrentPage("complete");
   };
 
@@ -43,48 +39,40 @@ export default function AnswerQuestion(
           日記を書く 1/2
         </PageHeader>
         <div className="flex flex-col w-4/5 mx-auto space-y-4">
-          <div className="flex flex-col w-full mx-auto space-y-4">
-            <textarea
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="本文"
-              value={diary}
-              rows={4}
-              onChange={(e) => setDiary(e.target.value)}
-            />
-            <textarea
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="工夫したこと"
-              value={effort}
-              rows={4}
-              onChange={(e) => setEffort(e.target.value)}
-            />
-            <textarea
-              className="w-full p-2 border border-gray-300 rounded-md"
-              placeholder="得たこと"
-              value={gain}
-              rows={4}
-              onChange={(e) => setGain(e.target.value)}
-            />
-            {error && <p className="text-red-500">すべて入力してください。</p>}
-            <div className="flex flex-row justify-end space-x-4">
-              <CircleButton
-                label="戻る"
-                fontsize="50px"
-                color="#fff"
-                backgroundColor="#999999"
-                Icon={ArrowBackIosNew}
-                onClick={handleBack}
-              />
-              <CircleButton
-                label="次へ"
-                fontsize="50px"
-                color="#fff"
-                backgroundColor="#60D11A"
-                Icon={ChevronRightRounded}
-                onClick={handleSubmit}
-              />
-            </div>
-          </div>
+					{questions.map((question, index) => (
+						<div className="space-y-0" key={index}>
+							<label key={index}>{question}</label>
+							<textarea
+								key={index}
+								className="w-full p-2 border border-gray-300 rounded-md"
+								rows={4}
+								onChange={(e) => {
+									const newAnswers = [...answers];
+									newAnswers[index] = e.target.value;
+									setAnswers(newAnswers);
+								}}
+							/>
+						</div>
+					))}
+					{error && <p className="text-red-500">すべて入力してください。</p>}
+					<div className="flex flex-row justify-end space-x-4">
+						<CircleButton
+							label="戻る"
+							fontsize="50px"
+							color="#fff"
+							backgroundColor="#999999"
+							Icon={ArrowBackIosNew}
+							onClick={handleBack}
+						/>
+						<CircleButton
+							label="次へ"
+							fontsize="50px"
+							color="#fff"
+							backgroundColor="#60D11A"
+							Icon={ChevronRightRounded}
+							onClick={handleSubmit}
+						/>
+					</div>
         </div>
       </div>
     </>

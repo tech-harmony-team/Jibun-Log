@@ -6,7 +6,8 @@ import { DiaryData } from "@/types/daiaryData";
 import { set } from "react-hook-form";
 
 export default function SelectDiary(
-	{ setCurrentPage, currentPage }: { setCurrentPage: (page: string) => void; currentPage: string }) {
+	{ setCurrentPage, currentPage, selectedDiary, setSelectedDiary }:
+	{ setCurrentPage: (page: string) => void; currentPage: string; selectedDiary: string; setSelectedDiary: (diary: string) => void }) {
   const testData: DiaryData[] = [
     {
       id: 1,
@@ -86,8 +87,7 @@ export default function SelectDiary(
 					<div className="w-full" key={diaryData.id} onClick={() => {
             const selectedDiary = testData.find(data => data.id === diaryData.id);
             if (selectedDiary) {
-              // 一致するidのデータをfeatures/loadingのpage.tsxに渡して、遷移するコード
-              // ここに遷移するコードを追加
+							setSelectedDiary(selectedDiary.actionName);
 							setCurrentPage("loading");
             }
           }}>
