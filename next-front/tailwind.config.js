@@ -6,6 +6,10 @@ module.exports = {
       maxWidth: {
         600: "600px",
       },
+      colors: {
+        "green-button": "#60D11A",
+        "red-button": "#F82323",
+      },
     },
   },
   plugins: [],
