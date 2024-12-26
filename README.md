@@ -1,6 +1,8 @@
 # Jibun-Log
 
-自分 Log の開発用リポジトリ
+自分 Log の開発用リポジトリ。  
+自分の日記を通じた、事実に基づく自己分析を支援するアプリ。  
+詳細: https://www.canva.com/design/DAGMMUW2zZY/G9-oBAQZCaxpiabiKIrsLg/edit?utm_content=DAGMMUW2zZY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 # 環境構築
 
